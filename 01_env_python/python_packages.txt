@@ -1,0 +1,21 @@
+# Secret storage for passwords
+ipython-secrets
+keyrings.cryptfile
+
+# nbextensions packages
+ipyparallel
+autopep8
+
+# Utility packages
+cookiecutter
+papermill
+
+# Data Science packages
+pandas
+matplotlib
+scipy
+scikit-learn
+tensorflow
+Keras
+seaborn
+gensim

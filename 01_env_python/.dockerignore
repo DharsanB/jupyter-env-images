@@ -1,0 +1,9 @@
+# Excluding .git files
+*.git
+
+# MD files
+*md
+
+# Other build files
+*_env_*
+!01_env_python
