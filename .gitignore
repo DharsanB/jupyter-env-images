@@ -116,3 +116,4 @@ venv.bak/
 # Other environments
 *_env_*
 !01_env_python
+!02_env_r
