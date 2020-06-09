@@ -26,9 +26,9 @@ RUN chmod 777 -R /usr/local/lib/R/site-library &&\
     echo "cd ~/work" >> /home/jovyan/.bashrc
 
 # Installing RStudio
-RUN wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-r_studio_version-amd64.deb  &&\
-    sudo gdebi --non-interactive rstudio-server-r_studio_version-amd64.deb &&\
-    rm rstudio-server-r_studio_version-amd64.deb &&\
+RUN wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-$r_studio_version-amd64.deb  &&\
+    sudo gdebi --non-interactive rstudio-server-$r_studio_version-amd64.deb &&\
+    rm rstudio-server-$r_studio_version-amd64.deb &&\
     echo "session-default-working-dir=/home/jovyan/work" >> /etc/rstudio/rsession.conf &&\
     echo "session-default-new-project-dir=/home/jovyan/work" >> /etc/rstudio/rsession.conf &&\
     pip install --no-cache-dir jupyter-rsession-proxy
