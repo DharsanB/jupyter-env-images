@@ -1,0 +1,8 @@
+# Excluding .git files
+*.git
+
+# MD files
+*md
+
+#julia
+# julia_lang/

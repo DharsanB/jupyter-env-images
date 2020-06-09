@@ -112,9 +112,3 @@ venv.bak/
 
 # deb files
 *.deb
-
-# Other environments
-*_env_*
-!01_env_python
-!02_env_r
-!03_env_rstudio
