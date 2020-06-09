@@ -26,14 +26,14 @@ RUN wget -P /opt/ https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4
     tar -xvzf   /opt/julia-1.4.2-linux-x86_64.tar.gz -C /opt/ &&\
     rm /opt/julia-1.4.2-linux-x86_64.tar.gz &&\
     ln -s /opt/julia-1.4.2/bin/julia /usr/loacal/bin/julia &&\
-    julia  -e 'using Pkg;  Pkg.add("IJulia")'
+    julia -e 'using Pkg;  Pkg.add("IJulia")'
 
-
-# RUN jupyter nbextension enable code_prettify/autopep8
-COPY jupyter_config/common.json /home/jovyan/.jupyter/nbconfig/ 
 
 # Reverting back to jovyan user
 USER  $NB_UID
+
+# RUN jupyter nbextension enable code_prettify/autopep8
+COPY jupyter_config/common.json /home/jovyan/.jupyter/nbconfig/
 
 ## Enabling most used NB extensions
 RUN sudo chmod 777 -R /home/jovyan/.jupyter &&\

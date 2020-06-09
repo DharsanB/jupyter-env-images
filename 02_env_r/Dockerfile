@@ -39,9 +39,8 @@ RUN conda update -y -n  base conda &&\
 
 
 # Fixing permissions
-RUN chmod 777 -R /home/jovyan/.jupyter &&\
-    chmod 777 -R /usr/local/lib/R/site-library &&\
-    chmod 777 -R /home/jovyan/.local/share &&\
+RUN chmod 777 -R /usr/local/lib/R/site-library &&\
+    chmod 777 -R /home/jovyan/.local
 
 # Reverting back to jovyan user
 USER  $NB_UID

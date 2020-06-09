@@ -3,7 +3,9 @@ FROM jupyterhub/singleuser
 # Setting root user
 USER root
 
+
 ENV r_studio_version=1.3.959
+
 # Adding conda to $PATH 
 ENV PATH=/opt/conda/bin:$PATH
 
@@ -13,15 +15,14 @@ RUN rm /etc/environment &&\
     echo 'jovyan  ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # Installing latest R versions
-RUN apt-get update && apt-get -y upgrade && apt-get install -y vim gnupg2 gdebi-core&&\
+RUN apt-get update && apt-get -y upgrade && apt-get install -y vim gnupg2 gdebi-core &&\
     gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 && \
     gpg -a --export E298A3A825C0D65DFD57CBB651716619E084DAB9 | sudo apt-key add - && \
     apt-get update &&  apt-get install -y r-base build-essential &&\
     apt-get -y autoremove &&  apt-get clean
 
 # Fixing permissions
-RUN chmod 777 -R /home/jovyan/.jupyter &&\
-    chmod 777 -R /usr/local/lib/R/site-library &&\
+RUN chmod 777 -R /usr/local/lib/R/site-library &&\
     echo "cd ~/work" >> /home/jovyan/.bashrc
 
 # Installing RStudio
