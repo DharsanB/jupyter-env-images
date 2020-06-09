@@ -40,7 +40,6 @@ RUN pip install --no-cache-dir -r /home/jovyan/python_packages.txt &&\
 # Reverting back to jovyan user
 USER  $NB_UID
 
-# RUN jupyter nbextension enable code_prettify/autopep8
 COPY jupyter_config/common.json /home/jovyan/.jupyter/nbconfig/ 
 
 ## Enabling most used NB extensions
