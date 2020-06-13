@@ -12,22 +12,31 @@ RUN rm /etc/environment &&\
     echo 'jovyan  ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # Installing all apt packages and conda packages
-RUN apt-get update && apt-get -y upgrade && apt-get install -y vim \
+RUN apt-get update && apt-get -y upgrade && apt-get install -y --no-install-recommends\
+    vim \
     pandoc \
     texlive-xetex \
     texlive-fonts-recommended \
     texlive-generic-recommended &&\
     apt-get -y autoremove &&\
-    apt-get clean &&\
-    conda install nbconvert
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Installing julia lang
 RUN wget -P /opt/ https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4.2-linux-x86_64.tar.gz &&\
     tar -xvzf   /opt/julia-1.4.2-linux-x86_64.tar.gz -C /opt/ &&\
     rm /opt/julia-1.4.2-linux-x86_64.tar.gz &&\
-    ln -s /opt/julia-1.4.2/bin/julia /usr/loacal/bin/julia &&\
+    ln -s /opt/julia-1.4.2/bin/julia /usr/local/bin/julia &&\
     julia -e 'using Pkg;  Pkg.add("IJulia")'
 
+# Installing jupyter_contrib_nbextensions and its components
+## Updating conda before all installations
+RUN conda update -y --all &&\
+    conda install -c conda-forge jupyter_contrib_nbextensions \
+    jupyter_nbextensions_configurator \
+    ipywidgets \
+    nbconvert &&\
+    conda clean -y -a &&\
+    pip install --no-cache-dir ipyparallel
 
 # Reverting back to jovyan user
 USER  $NB_UID
