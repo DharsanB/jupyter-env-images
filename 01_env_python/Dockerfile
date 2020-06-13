@@ -12,7 +12,7 @@ RUN rm /etc/environment &&\
     echo 'jovyan  ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # Installing vim
-RUN apt-get update && apt-get -y upgrade && apt-get install -y \
+RUN apt-get update && apt-get -y upgrade && apt-get install -y --no-install-recommends\
     vim \
     pandoc \
     texlive-xetex \
@@ -24,12 +24,12 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y \
 
 # Installing jupyter_contrib_nbextensions and its components
 ## Updating conda before all installations
-RUN conda update -y -n base conda &&\
-    conda update --all &&\
+RUN conda update -y -n base --all &&\
     conda install -c conda-forge jupyter_contrib_nbextensions \
     jupyter_nbextensions_configurator \
     ipywidgets &&\
-    conda install nbconvert
+    nbconvert &&\
+    conda clean -y -a
 
 # Adding frequently used and recommended python packages
 ## Copying file package list from machine
