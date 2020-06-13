@@ -29,7 +29,6 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
 
 # Fixing permissions
 RUN chmod 777 -R /usr/local/lib/R/site-library &&\
-    chmod 777 -R /home/jovyan/.local &&\
     echo "cd ~/work" >> /home/jovyan/.bashrc
 
 
