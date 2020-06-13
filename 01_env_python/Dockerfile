@@ -27,7 +27,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y --no-install-reco
 RUN conda update -y --all &&\
     conda install -c conda-forge jupyter_contrib_nbextensions \
     jupyter_nbextensions_configurator \
-    ipywidgets &&\
+    ipywidgets\
     nbconvert &&\
     conda clean -y -a
 
