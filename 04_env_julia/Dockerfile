@@ -45,7 +45,8 @@ USER  $NB_UID
 COPY jupyter_config/common.json /home/jovyan/.jupyter/nbconfig/
 
 ## Enabling most used NB extensions
-RUN sudo chmod 777 -R /home/jovyan/.jupyter &&\
+RUN sudo chmod 777 -R /home/jovyan/.local &&\
+    sudo chmod 777 -R /home/jovyan/.jupyter &&\
     jupyter nbextension enable spellchecker/main && \
     jupyter nbextension enable execute_time/ExecuteTime && \
     jupyter nbextension enable notify/notify && \
