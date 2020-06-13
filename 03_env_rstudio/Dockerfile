@@ -19,9 +19,9 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/' >> /etc/apt/sources.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 &&\
     apt-get update &&  apt-get install  --no-install-recommends -y r-base build-essential &&\
-    wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-$r_studio_version-amd64.deb  &&\
-    sudo gdebi --non-interactive rstudio-server-$r_studio_version-amd64.deb &&\
-    rm rstudio-server-$r_studio_version-amd64.deb &&\
+    wget -P /home/jovyan/ https://download2.rstudio.org/server/bionic/amd64/rstudio-server-$r_studio_version-amd64.deb  &&\
+    gdebi -o "APT::Install-Recommends=0" --non-interactive /home/jovyan/rstudio-server-$r_studio_version-amd64.deb &&\
+    rm /home/jovyan/rstudio-server-$r_studio_version-amd64.deb &&\
     echo "session-default-working-dir=/home/jovyan/work" >> /etc/rstudio/rsession.conf &&\
     echo "session-default-new-project-dir=/home/jovyan/work" >> /etc/rstudio/rsession.conf &&\
     pip install --no-cache-dir jupyter-rsession-proxy ipyparallel &&\
