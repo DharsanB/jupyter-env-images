@@ -32,7 +32,7 @@ RUN R -e "install.packages(c('repr', 'IRdisplay', 'IRkernel'), type = 'source')"
 RUN conda update -y --all &&\
     conda install -c conda-forge jupyter_contrib_nbextensions \
     jupyter_nbextensions_configurator \
-    ipywidgets &&\
+    ipywidgets \
     nbconvert &&\
     conda clean -y -a &&\
     pip install --no-cache-dir ipyparallel
