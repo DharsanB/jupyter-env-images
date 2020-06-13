@@ -21,7 +21,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install --no-install-recomme
     echo 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/' >> /etc/apt/sources.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 &&\
     apt-get update &&  apt-get install --no-install-recommends -y r-base build-essential libzmq3-dev libcurl4-openssl-dev libssl-dev jupyter-core jupyter-client &&\
-    apt-get remove -y gnupg2 && apt-get -y autoremove &&  apt-get clean
+    apt-get remove -y gnupg2 && apt-get -y autoremove &&  apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Installing IRkernel
 RUN R -e "install.packages(c('repr', 'IRdisplay', 'IRkernel'), type = 'source')" && \

@@ -19,7 +19,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y --no-install-reco
     texlive-fonts-recommended \
     texlive-generic-recommended &&\
     apt-get -y autoremove &&\
-    apt-get clean
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
 # Installing jupyter_contrib_nbextensions and its components
