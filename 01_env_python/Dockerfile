@@ -24,7 +24,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y --no-install-reco
 
 # Installing jupyter_contrib_nbextensions and its components
 ## Updating conda before all installations
-RUN conda update -y -n base --all &&\
+RUN conda update -y --all &&\
     conda install -c conda-forge jupyter_contrib_nbextensions \
     jupyter_nbextensions_configurator \
     ipywidgets &&\
