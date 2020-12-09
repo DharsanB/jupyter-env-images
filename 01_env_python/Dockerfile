@@ -14,11 +14,11 @@ RUN rm /etc/environment &&\
 # Installing vim
 RUN apt-get update && apt-get -y upgrade && apt-get install -y --no-install-recommends\
     vim \
-    pandoc \
-    texlive-xetex \
-    texlive-fonts-recommended \
-    texlive-generic-recommended &&\
-    apt-get -y autoremove &&\
+#    pandoc \
+#    texlive-xetex \
+#    texlive-fonts-recommended \
+#    texlive-generic-recommended &&\
+   apt-get -y autoremove &&\
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
