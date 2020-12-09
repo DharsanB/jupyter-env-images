@@ -12,13 +12,12 @@ RUN rm /etc/environment &&\
     echo 'jovyan  ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # Installing vim
-RUN apt-get update && apt-get -y upgrade && apt-get install -y --no-install-recommends\
+RUN apt-get update apt-get install -y --no-install-recommends\
     vim \
-#    pandoc \
-#    texlive-xetex \
-#    texlive-fonts-recommended \
-#    texlive-generic-recommended &&\
-   apt-get -y autoremove &&\
+    pandoc \
+    texlive-xetex \
+    texlive-fonts-recommended &&\
+    apt-get -y autoremove &&\
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
